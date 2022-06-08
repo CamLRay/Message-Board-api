@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Message</name>
+    </assembly>
+    <members>
+        <member name="M:Message.Controllers.ThreadsController.GetThread(System.String)">
+             <summary>
+             Returns thread
+             </summary>
+             <returns> A List of threads</returns>
+             <remarks>
+            
+             Sample request
+             GET /api/threads
+            
+             </remarks>
+            <response code="200">Returns a list of Threads</response>
+        </member>
+    </members>
+</doc>

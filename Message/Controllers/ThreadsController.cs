@@ -31,7 +31,19 @@ namespace Message.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Threads
+        /// <summary>
+        /// Returns thread
+        /// </summary>
+        /// <returns> A List of threads</returns>
+        /// <remarks>
+        ///
+        /// Sample request
+        /// GET /api/threads
+        ///
+       /// </remarks>
+        ///<response code="200">Returns a list of Threads</response>
+        
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ThreadDTO>>> GetThread(string author)
         {

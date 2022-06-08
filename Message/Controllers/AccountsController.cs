@@ -23,7 +23,8 @@ namespace Message.Controllers
       _userManager = userManager;
       _signInManager = signInManager;
     }
-    [HttpPost]
+
+    [HttpPost("register")]
     public async Task<ActionResult<RegisterUserDTO>> Register (RegisterUserDTO model)
     {
       Console.WriteLine("HIT");
@@ -43,19 +44,23 @@ namespace Message.Controllers
     {
       return "works";
     }
-    // [HttpPost]
-    // public async Task<ActionResult> Login(LoginViewModel model)
-    // {
-    //   Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
-    //   if (result.Succeeded)
-    //   {
-    //       return RedirectToAction("Index");
-    //   }
-    //   else
-    //   {
-    //       return View();
-    //   }
-    // }
+
+    [HttpPost("Login")]
+    public async Task<ActionResult> Login(LoginUserDTO model)
+    {
+      Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+      
+      if (result.Succeeded)
+      {
+        var user = await _userManager.FindByNameAsync(model.Email);
+          return Ok(user.Id);
+      }
+      else
+      {
+          return BadRequest();
+      }
+    }
+    
     // [HttpPost]
     // public async Task<ActionResult> LogOff()
     // {
